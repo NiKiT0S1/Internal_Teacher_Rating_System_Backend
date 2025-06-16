@@ -1,6 +1,7 @@
 package com.university.teacherreviewsystem.repository;
 
 import com.university.teacherreviewsystem.model.Review;
+import com.university.teacherreviewsystem.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -13,7 +14,8 @@ public interface ReviewRepository extends JpaRepository<Review, UUID> {
     List<Review> findByTeacherIdAndHiddenFalse(UUID teacherId);
 
     // Search for feedback from a specific student in a specific semester
-    Optional<Review> findByStudentIdAndTeacherIdAndSemester(UUID studentId, UUID teacherId, String semester);
+//    Optional<Review> findByStudentIdAndTeacherIdAndSemester(UUID studentId, UUID teacherId, String semester);
+    boolean existsByStudentAndTeacherIdAndSemester(User student, UUID teacherId, String semester);
 
     // Get all the reviews (moderator)
     List<Review> findAll();

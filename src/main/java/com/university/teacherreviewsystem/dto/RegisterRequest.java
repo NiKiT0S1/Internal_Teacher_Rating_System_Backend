@@ -1,4 +1,4 @@
-package com.university.teacherreviewsystem.controller;
+package com.university.teacherreviewsystem.dto;
 
 import com.university.teacherreviewsystem.model.Role;
 import lombok.Data;

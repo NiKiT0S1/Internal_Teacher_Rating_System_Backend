@@ -2,11 +2,16 @@ package com.university.teacherreviewsystem.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Type;
+//import org.hibernate.annotations.Type;
+//import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+//import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.Map;
 import java.util.UUID;
 
+//@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 @Entity
 @Table(name = "reviews")
 @Getter
@@ -34,8 +39,12 @@ public class Review {
      * JSON field, format: { "criteria_id": score, ... }
      * Saved in the database as JSONB
      */
+//    @Type(type = "jsonb")
+//    @Column(columnDefinition = "jsonb")
+//    @Column(columnDefinition = "jsonb")
+//    @Convert(converter = ScoresConverter.class)
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
-    @Convert(converter = ScoresConverter.class)
     private Map<UUID, Integer> scores;
 
     private String comment;

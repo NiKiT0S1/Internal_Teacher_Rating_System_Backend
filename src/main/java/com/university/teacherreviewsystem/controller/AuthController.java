@@ -1,6 +1,7 @@
 package com.university.teacherreviewsystem.controller;
 
-import com.university.teacherreviewsystem.model.Role;
+import com.university.teacherreviewsystem.dto.LoginRequest;
+import com.university.teacherreviewsystem.dto.RegisterRequest;
 import com.university.teacherreviewsystem.model.User;
 import com.university.teacherreviewsystem.repository.UserRepository;
 import com.university.teacherreviewsystem.service.JwtService;
