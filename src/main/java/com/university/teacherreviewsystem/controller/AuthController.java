@@ -2,7 +2,10 @@ package com.university.teacherreviewsystem.controller;
 
 import com.university.teacherreviewsystem.dto.LoginRequest;
 import com.university.teacherreviewsystem.dto.RegisterRequest;
+import com.university.teacherreviewsystem.model.Role;
+import com.university.teacherreviewsystem.model.Teacher;
 import com.university.teacherreviewsystem.model.User;
+import com.university.teacherreviewsystem.repository.TeacherRepository;
 import com.university.teacherreviewsystem.repository.UserRepository;
 import com.university.teacherreviewsystem.service.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +24,7 @@ import java.util.Map;
 public class AuthController {
 
     private final UserRepository userRepository;
+    private final TeacherRepository teacherRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
@@ -31,6 +35,18 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Username already exists");
         }
 
+        if (request.getRole() == Role.TEACHER) {
+            if (request.getDepartment() == null || request.getDepartment().isEmpty()) {
+                return ResponseEntity.badRequest().body("Department is required for teachers");
+            }
+        }
+
+        if (request.getRole() == Role.STUDENT || request.getRole() == Role.MODERATOR) {
+            if (request.getDepartment() != null && !request.getDepartment().isEmpty()) {
+                return ResponseEntity.badRequest().body("Students and Moderators should not provide a department");
+            }
+        }
+
         User user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
@@ -39,7 +55,22 @@ public class AuthController {
                 .role(request.getRole())
                 .build();
 
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
+
+        if (request.getRole() == Role.TEACHER) {
+//            if (request.getDepartment() == null || request.getDepartment().isEmpty()) {
+//                return ResponseEntity.badRequest().body("Department is required for teachers");
+//            }
+
+            Teacher teacher = Teacher.builder()
+                    .fullname(request.getFullName())
+                    .department(request.getDepartment())
+                    .user(savedUser)
+                    .build();
+
+            teacherRepository.save(teacher);
+        }
+
         return ResponseEntity.ok("User registered successfully");
     }
 
