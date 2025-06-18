@@ -30,7 +30,14 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers(
+                                "/auth/**",
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/swagger-resources/**",
+                                "/webjars/**"
+                        ).permitAll()
                         .requestMatchers("/reviews/**").hasRole("STUDENT")
 //                        .requestMatchers("/teachers/**").hasRole("STUDENT")
 //                        .requestMatchers("/criteria/**").hasRole("STUDENT")

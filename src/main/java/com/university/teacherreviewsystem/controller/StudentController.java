@@ -19,16 +19,19 @@ public class StudentController {
     private final TeacherRepository teacherRepository;
     private final CriteriaRepository criteriaRepository;
 
+    // Show all teachers for Student
     @GetMapping("/teachers")
     public List<Teacher> getAllTeachers() {
         return teacherRepository.findAll();
     }
 
+    // Show all criteria
     @GetMapping("/criteria")
     public List<Criteria> getAllCriteria() {
         return criteriaRepository.findAll();
     }
 
+    // Just Test Access
     @GetMapping("/test")
     public String studentAccess() {
         return "Hello, STUDENT! You have access to reviews.";
