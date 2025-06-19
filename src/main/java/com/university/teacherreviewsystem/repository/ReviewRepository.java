@@ -1,3 +1,10 @@
+/**
+ * Назначение: Интерфейс используется для работы с данными сущности Review в базе данных,
+ * и показывает отзывы о конкретном преподавателе (только видимые),
+ * и проверяет существования отзыва (предотвращение дублирования).
+ * Взят из документации по Spring Data JPA
+ */
+
 package com.university.teacherreviewsystem.repository;
 
 import com.university.teacherreviewsystem.model.Review;

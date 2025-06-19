@@ -1,3 +1,16 @@
+/**
+ * Назначение: Подача отзывов - API Endpoints
+ *
+ * Порядок подачи отзыва:
+ * JWT фильтр извлекает username из токена
+ * Поиск студента в БД
+ * Проверка: нет ли уже отзыва от этого студента на этого преподавателя в этом семестре
+ * Валидация всех критериев (должны быть оценены все)
+ * Проверка корректности ID критериев
+ * Создание Review с JSON scores
+ * Сохранение в БД
+ */
+
 package com.university.teacherreviewsystem.controller;
 
 import com.university.teacherreviewsystem.dto.ReviewRequest;

@@ -1,3 +1,9 @@
+/**
+ * Назначение:
+ * Хранит информацию о преподавателях
+ * Может быть связан с User (если преподаватель зарегистрирован в системе)
+ */
+
 package com.university.teacherreviewsystem.model;
 
 import jakarta.persistence.*;

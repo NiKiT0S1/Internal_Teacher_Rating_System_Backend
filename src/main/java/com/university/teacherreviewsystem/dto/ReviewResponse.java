@@ -1,3 +1,7 @@
+/**
+ * Назначение: Ответ с отзывом, который сервер отправляет клиенту в ответ
+ */
+
 package com.university.teacherreviewsystem.dto;
 
 import lombok.AllArgsConstructor;

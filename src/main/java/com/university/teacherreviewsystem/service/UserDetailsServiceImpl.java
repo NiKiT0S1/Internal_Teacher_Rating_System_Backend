@@ -1,3 +1,10 @@
+/**
+ * Назначение: Загрузка информации пользователей
+ * берет имя пользователя, ищет соответствующего пользователя в базе данных,
+ * и, если находит, создает объект UserDetails,
+ * который Spring Security использует для аутентификации и авторизации пользователя
+ */
+
 package com.university.teacherreviewsystem.service;
 
 import com.university.teacherreviewsystem.model.User;

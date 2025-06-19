@@ -1,3 +1,7 @@
+/**
+ * Назначение: Данные входа
+ */
+
 package com.university.teacherreviewsystem.dto;
 
 import lombok.Data;

@@ -1,3 +1,10 @@
+/**
+ * Назначение:
+ * Конвертирует внутренние UUID критериев в понятные названия
+ * Используется в TeacherController и ModeratorController
+ * Предотвращает дублирование кода
+ */
+
 package com.university.teacherreviewsystem.util;
 
 import com.university.teacherreviewsystem.model.Criteria;

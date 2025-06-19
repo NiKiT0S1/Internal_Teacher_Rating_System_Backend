@@ -1,3 +1,7 @@
+/**
+ * Назначение: Средняя статистика на основе отзывов
+ */
+
 package com.university.teacherreviewsystem.dto;
 
 import lombok.AllArgsConstructor;

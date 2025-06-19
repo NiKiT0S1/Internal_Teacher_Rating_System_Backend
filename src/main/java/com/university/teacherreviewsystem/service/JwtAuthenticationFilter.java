@@ -1,3 +1,14 @@
+/**
+ * Назначение: Фильтр аутентификации
+ * Порядок работы:
+ * Перехватывает каждый HTTP запрос
+ * Ищет заголовок "Authorization: Bearer {token}"
+ * Извлекает и валидирует JWT токен
+ * Загружает информацию о пользователе
+ * Устанавливает аутентификацию в Spring Security
+ * Пропускает запрос к контроллеру
+ */
+
 package com.university.teacherreviewsystem.service;
 
 import jakarta.servlet.FilterChain;

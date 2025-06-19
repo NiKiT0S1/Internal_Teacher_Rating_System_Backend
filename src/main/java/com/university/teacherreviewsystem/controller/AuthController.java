@@ -1,3 +1,21 @@
+/**
+ * Назначение: Аутентификация - API Endpoints
+ *
+ * Порядок работы регистрации:
+ * Получение данных из RegisterRequest
+ * Проверка уникальности username
+ * Валидация роли и обязательных полей
+ * Хеширование пароля через BCrypt
+ * Сохранение User в БД
+ * Если роль TEACHER - создание связанной записи Teacher
+ *
+ * Порядок работы логина:
+ * Аутентификация через AuthenticationManager
+ * Поиск пользователя в БД
+ * Генерация JWT токена
+ * Возврат токена + информации о пользователе
+ */
+
 package com.university.teacherreviewsystem.controller;
 
 import com.university.teacherreviewsystem.dto.LoginRequest;

@@ -1,3 +1,12 @@
+/**
+ * Назначение:
+ * Настраивает JWT аутентификацию (без сессий)
+ * Определяет права доступа по ролям
+ * Настраивает CORS для фронтенда
+ * Подключает JWT фильтр для проверки токенов
+ * Взят из документации по Spring Security
+ */
+
 package com.university.teacherreviewsystem.config;
 
 import com.university.teacherreviewsystem.service.JwtAuthenticationFilter;

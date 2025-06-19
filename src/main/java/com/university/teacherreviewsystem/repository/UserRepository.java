@@ -1,3 +1,9 @@
+/**
+ * Назначение: Интерфейс используется для работы с данными сущности User в базе данных,
+ * и позволяет находить пользователя по его имени пользователя.
+ * Взят из документации по Spring Data JPA
+ */
+
 package com.university.teacherreviewsystem.repository;
 
 import com.university.teacherreviewsystem.model.User;

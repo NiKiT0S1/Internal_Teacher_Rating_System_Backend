@@ -1,3 +1,10 @@
+/**
+ * Назначение:
+ * Хранит оценки студентов
+ * Использует JSONB для гибкого хранения оценок по критериям
+ * Предотвращает повторные оценки (один студент = один отзыв на преподавателя за семестр)
+ */
+
 package com.university.teacherreviewsystem.model;
 
 import jakarta.persistence.*;
@@ -27,13 +34,13 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
-    private Teacher teacher;
+    private Teacher teacher; // Какого преподавателя оценивают
 
     @ManyToOne
     @JoinColumn(name = "student_id", referencedColumnName = "id")
-    private User student;
+    private User student; // Какой студент оставил отзыв
 
-    private String semester;
+    private String semester; // В каком семестре
 
     /**
      * JSON field, format: { "criteria_id": score, ... }

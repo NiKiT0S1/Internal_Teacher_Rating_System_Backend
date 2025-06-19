@@ -1,3 +1,7 @@
+/**
+ * Назначение: Базовая сущность для всех пользователей системы
+ */
+
 package com.university.teacherreviewsystem.model;
 
 import jakarta.persistence.*;

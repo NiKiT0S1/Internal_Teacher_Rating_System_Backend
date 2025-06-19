@@ -1,3 +1,7 @@
+/**
+ * Назначение: Настраивает Swagger UI для документации API
+ */
+
 package com.university.teacherreviewsystem.config;
 
 import io.swagger.v3.oas.models.OpenAPI;

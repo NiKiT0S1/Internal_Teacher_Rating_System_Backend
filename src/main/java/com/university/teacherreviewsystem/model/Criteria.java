@@ -1,3 +1,7 @@
+/**
+ * Назначение: Хранит критерии, по которым студенты оценивают преподавателей
+ */
+
 package com.university.teacherreviewsystem.model;
 
 import jakarta.persistence.*;

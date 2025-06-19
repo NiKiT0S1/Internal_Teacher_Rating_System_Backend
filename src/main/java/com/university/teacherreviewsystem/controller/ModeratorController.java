@@ -1,3 +1,12 @@
+/**
+ * Назначение: Функции модератора - API Endpoints
+ * Возвращает ВСЕ отзывы (включая скрытые)
+ * Скрывает отзыв (hidden = true)
+ * Показывает отзыв (hidden = false)
+ * Добавляет новый критерий оценки
+ * Удаляет критерий
+ */
+
 package com.university.teacherreviewsystem.controller;
 
 import com.university.teacherreviewsystem.dto.ReviewResponse;

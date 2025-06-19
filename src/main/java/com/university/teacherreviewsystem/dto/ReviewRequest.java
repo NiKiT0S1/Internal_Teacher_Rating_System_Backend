@@ -1,3 +1,7 @@
+/**
+ * Назначение: Данные отзыва
+ */
+
 package com.university.teacherreviewsystem.dto;
 
 import jakarta.validation.constraints.NotEmpty;

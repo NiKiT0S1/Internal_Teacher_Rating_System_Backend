@@ -1,3 +1,9 @@
+/**
+ * Назначение: Функции преподавателя - API Endpoints
+ * Возврат списка отзывов
+ * Возврат средней статистики на основе отзывов
+ */
+
 package com.university.teacherreviewsystem.controller;
 
 import com.university.teacherreviewsystem.dto.AverageScoreResponse;

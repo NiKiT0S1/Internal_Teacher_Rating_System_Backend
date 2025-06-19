@@ -1,3 +1,9 @@
+/**
+ * Назначение: Функции студента - API Endpoints
+ * Возвращает список всех преподавателей для выбора
+ * Возвращает все критерии оценки
+ */
+
 package com.university.teacherreviewsystem.controller;
 
 import com.university.teacherreviewsystem.model.Criteria;
