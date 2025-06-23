@@ -56,6 +56,12 @@ public class ReviewController {
                     .body("You have already submitted a review for this teacher in this semester.");
         }
 
+        for (Integer score : request.getScores().values()) {
+            if (score < 1 || score > 5) {
+                return ResponseEntity.badRequest().body("All criteria must be from 1 to 5.");
+            }
+        }
+
         int totalCriteria = (int) criteriaRepository.count();
         if (request.getScores() == null || request.getScores().size() != totalCriteria) {
             return ResponseEntity.badRequest().body("You must evaluate all criteria");

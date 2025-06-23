@@ -11,6 +11,8 @@
 
 package com.university.teacherreviewsystem.service;
 
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -49,6 +51,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         jwt = authHeader.substring(7);
         username = jwtService.extractUsername(jwt);
+//        try {
+//            username = jwtService.extractUsername(jwt);
+//        }
+//        catch (ExpiredJwtException e) {
+//            handleUnauthorized(response, "Token expired");
+//            return;
+//        }
+//        catch (JwtException e) {
+//            handleUnauthorized(response, "Invalid token");
+//            return;
+//        }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
@@ -65,4 +78,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
     }
+
+//    private void handleUnauthorized(HttpServletResponse response, String message) throws IOException {
+//        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//        response.setContentType("application/json");
+//        response.getWriter().write("{\"error\": \"" + message + "\"}");
+//        response.flushBuffer();
+//    }
 }

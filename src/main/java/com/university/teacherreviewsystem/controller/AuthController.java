@@ -110,6 +110,7 @@ public class AuthController {
         response.put("token", jwtToken);
         response.put("username", user.getUsername());
         response.put("role", user.getRole().name());
+        response.put("fullname", user.getFullname());
 
         return ResponseEntity.ok(response);
     }
