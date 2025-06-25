@@ -17,4 +17,7 @@ public class ReviewResponse {
     private String semester;
     private Map<String, Integer> scores;
     private String comment;
+    private boolean isHidden;
+    private String teacherFullname;
+    private String teacherUsername;
 }

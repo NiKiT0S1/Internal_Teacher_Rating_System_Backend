@@ -12,6 +12,8 @@ package com.university.teacherreviewsystem.controller;
 import com.university.teacherreviewsystem.dto.ReviewResponse;
 import com.university.teacherreviewsystem.model.Criteria;
 import com.university.teacherreviewsystem.model.Review;
+import com.university.teacherreviewsystem.model.Teacher;
+import com.university.teacherreviewsystem.model.User;
 import com.university.teacherreviewsystem.repository.CriteriaRepository;
 import com.university.teacherreviewsystem.repository.ReviewRepository;
 import com.university.teacherreviewsystem.util.ReviewUtils;
@@ -38,12 +40,23 @@ public class ModeratorController {
         List<Review> reviews = reviewRepository.findAll();
 
         List<ReviewResponse> response = reviews.stream()
-                .map(review -> new ReviewResponse(
-                        review.getId(),
-                        review.getSemester(),
-                        reviewUtils.mapCriteriaNames(review.getScores()),
-                        review.getComment()
-                ))
+                .map(review -> {
+                    Teacher teacher = review.getTeacher();
+                    User teacherUser = (teacher != null) ? teacher.getUser() : null;
+
+                    String fullname = (teacherUser != null) ? teacherUser.getFullname() : "Unknown";
+                    String username = (teacherUser != null) ? teacherUser.getUsername() : "unknown";
+
+                    return new ReviewResponse(
+                            review.getId(),
+                            review.getSemester(),
+                            reviewUtils.mapCriteriaNames(review.getScores()),
+                            review.getComment(),
+                            review.isHidden(),
+                            fullname,
+                            username
+                    );
+                })
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(response);
@@ -73,6 +86,12 @@ public class ModeratorController {
         return ResponseEntity.ok("Review show successfully");
     }
 
+
+    @GetMapping("/criteria")
+    public ResponseEntity<List<Criteria>> getAllCriteria() {
+        List<Criteria> all = criteriaRepository.findAll();
+        return ResponseEntity.ok(all);
+    }
 
     // Add criteria
     @PostMapping("/criteria")

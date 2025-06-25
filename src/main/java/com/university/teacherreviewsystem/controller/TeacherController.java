@@ -55,12 +55,22 @@ public class TeacherController {
         List<Review> reviews = reviewRepository.findByTeacherAndHiddenFalse(teacher);
 
         List<ReviewResponse> response = reviews.stream()
-                .map(review -> new ReviewResponse(
-                        review.getId(),
-                        review.getSemester(),
-                        reviewUtils.mapCriteriaNames(review.getScores()),
-                        review.getComment()
-                ))
+                .map(review -> {
+                    User user = review.getTeacher() != null ? review.getTeacher().getUser() : null;
+
+                    String fullname = (user != null) ? user.getFullname() : "Unknown";
+                    String uname = (user != null) ? user.getUsername() : "unknown";
+
+                    return new ReviewResponse(
+                            review.getId(),
+                            review.getSemester(),
+                            reviewUtils.mapCriteriaNames(review.getScores()),
+                            review.getComment(),
+                            review.isHidden(),
+                            fullname,
+                            uname
+                    );
+                })
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(response);
